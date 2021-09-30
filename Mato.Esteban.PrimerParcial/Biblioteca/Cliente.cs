@@ -17,6 +17,8 @@ namespace Biblioteca
         public string nombre;
         public string apellido;
         public int edad;
+        public DateTime horaInicial;
+        public DateTime horaFinal;
         public EAccion accion;
         public Equipo equipo;
 
@@ -33,11 +35,16 @@ namespace Biblioteca
             this.accion = accion;
         }
 
+        #region GETTERS Y SETTERS
         public string Dni
         {
             get
             {
                 return dni;
+            }
+            set
+            {
+                this.dni = value;
             }
         }
 
@@ -47,12 +54,20 @@ namespace Biblioteca
             {
                 return nombre;
             }
+            set
+            {
+                this.nombre = value;
+            }
         }
         public string Apellido
         {
             get
             {
                 return apellido;
+            }
+            set
+            {
+                this.apellido = value;
             }
         }
         public int Edad
@@ -61,6 +76,10 @@ namespace Biblioteca
             {
                 return edad;
             }
+            set
+            {
+                this.edad = value;
+            }
         }
         public EAccion Accion
         {
@@ -68,15 +87,57 @@ namespace Biblioteca
             {
                 return accion;
             }
+            set
+            {
+                this.accion = value;
+            }
         }
-      
+
+        public DateTime HoraInicial
+        {
+            get
+            {
+                return horaInicial;
+            }
+
+            set
+            {
+                this.horaInicial = value;
+            }
+        }
+
+        public DateTime HoraFinal
+        {
+            get
+            {
+                return horaFinal;
+            }
+
+            set
+            {
+                this.horaFinal = value;
+            }
+        }
+#endregion
+        
+        public double TiempoDeUso()
+        {
+          //  TimeSpan duracion = this.HoraFinal - this.HoraInicial;
+            TimeSpan duracion = DateTime.Now.AddSeconds(29) - DateTime.Now;
+
+            double segundosTotales = duracion.TotalSeconds;
+
+            return segundosTotales;
+        }
+
         public string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"{Dni} , {Nombre}, {Apellido} , {Edad}");
 
             return sb.ToString();
-
         }
+
+
     }
 }

@@ -8,8 +8,10 @@ namespace Biblioteca
 {
     public abstract class Equipo
     {
-        protected DateTime tiempoUso;
         protected float costo;
-        public bool enUso;
+        public Cliente clienteEnUso;
+
+        public abstract double CalcularCosto();
+
     }
 }

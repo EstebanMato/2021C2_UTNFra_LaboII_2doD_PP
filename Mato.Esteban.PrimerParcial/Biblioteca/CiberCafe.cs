@@ -6,44 +6,46 @@ namespace Biblioteca
     public class CiberCafe
     {
         public Queue<Cliente> listaDeClientes;
+        public List<Cliente> ListaClientesFacturados;
 
         public CiberCafe()
         {
             this.listaDeClientes = new Queue<Cliente>();
+            this.ListaClientesFacturados = new List<Cliente>();
         }
 
         public Computadora AsignarEquipo(Cliente cliente, Computadora computadora)
         {
             cliente.equipo = computadora;
-            computadora.enUso = true;
+            computadora.clienteEnUso = cliente;
             return computadora;
         }
 
         public Telefono AsignarEquipo(Cliente cliente, Telefono telefono)
         {
             cliente.equipo = telefono;
-            telefono.enUso = true;
+            telefono.clienteEnUso = cliente;
             return telefono;
         }
 
         public string LlamarCliente(Equipo equipo)
         {
-            //depende que contenga el cliente llamo a uno o al otro
-            Cliente c1 = new Cliente();
-            c1 = this.ProximoCliente(listaDeClientes);
-            if(c1 != null)
+            Cliente cliente = new Cliente();
+            cliente = this.ProximoCliente(listaDeClientes);
+            if(cliente != null)
             {
-                if (c1.accion is Cliente.EAccion.Llamar)
+                if (cliente.accion is Cliente.EAccion.Llamar)
                 {
-                    this.AsignarEquipo(c1, (Telefono)equipo);
+                    
+                    this.AsignarEquipo(cliente, (Telefono)equipo);
                 }
 
-                if (c1.accion is Cliente.EAccion.Viciar)
+                if (cliente.accion is Cliente.EAccion.Viciar)
                 {
-                    this.AsignarEquipo(c1, (Computadora)equipo);
+                    this.AsignarEquipo(cliente, (Computadora)equipo);
                 }
-
-                return ($"Se agrego el cliente {c1.Mostrar()} al equipo {equipo}");
+                cliente.HoraInicial = DateTime.Now;
+                return ($"Se agrego el cliente {cliente.Mostrar()} al equipo {equipo}");
             }
             return "No hay más clientes en la lista";
         }
@@ -56,9 +58,9 @@ namespace Biblioteca
             return null;
         }
 
-        public float Cobrar(Equipo equipo)
+        public string Cobrar(Equipo equipo)
         {
-            return CalcularCosto(equipo);
+            return equipo.CalcularCosto().ToString();
         }
 
 

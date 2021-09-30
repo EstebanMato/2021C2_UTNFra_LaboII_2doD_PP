@@ -8,6 +8,7 @@ namespace Biblioteca
 {
     public class Computadora : Equipo
     {
+        #region ENUMERADOS
         public enum ESoftware
         {
             Office, Msn, Ares
@@ -37,6 +38,7 @@ namespace Biblioteca
         {
             Mala, Media, Buena
         }
+        #endregion
 
         protected List<ESoftware> listadoSoftwares;
         protected List<EPerifericos> listadoPerifericos;
@@ -60,8 +62,13 @@ namespace Biblioteca
             this.placaVideo = video;
         }
 
+        #region GETTERS AND SETTERS
         public List<ESoftware> ListadoSoftware
         {
+            get
+            {
+                return this.listadoSoftwares;
+            }
             set
             {
                 listadoSoftwares = value;
@@ -69,6 +76,10 @@ namespace Biblioteca
         }
         public List<EPerifericos> ListadoPerifericos
         {
+            get
+            {
+                return this.listadoPerifericos;
+            }
             set
             {
                 listadoPerifericos = value;
@@ -76,6 +87,10 @@ namespace Biblioteca
         }
         public List<EJuegos> ListadoJuegos
         {
+            get
+            {
+                return this.listadoJuegos;
+            }
             set
             {
                 listadoJuegos = value;
@@ -84,6 +99,10 @@ namespace Biblioteca
 
         public Computadora.EProcesador Procesador
         {
+            get
+            {
+                return this.procesador;
+            }
             set
             {
                 this.procesador = value;
@@ -91,6 +110,10 @@ namespace Biblioteca
         }
         public Computadora.ERAM Ram
         {
+            get
+            {
+                return this.ram;
+            }
             set
             {
                 this.ram = value;
@@ -98,10 +121,35 @@ namespace Biblioteca
         }
         public Computadora.EPlacaVideo PlacaVideo
         {
+            get
+            {
+                return this.placaVideo;
+            }
             set
             {
                 this.placaVideo = value;
             }
+        }
+#endregion
+
+        /// <summary>
+        /// Retorno el costo de uso una computadora
+        /// </summary>
+        /// <param name="cliente">Cliente que utilizo dicha computadora</param>
+        /// <returns></returns>
+        public override double CalcularCosto()
+        {
+            this.clienteEnUso.HoraFinal = DateTime.Now;
+            double tiempoUso = (double)(this.clienteEnUso.TiempoDeUso());
+            int cantMediaHora = 0;
+
+            while (tiempoUso > 0)
+            {
+                tiempoUso -= 30;
+                cantMediaHora++;
+            }
+
+            return cantMediaHora*0.50;
         }
     }
 }

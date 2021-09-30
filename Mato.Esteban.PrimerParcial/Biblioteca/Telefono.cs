@@ -8,6 +8,7 @@ namespace Biblioteca
 {
     public class Telefono : Equipo
     {
+        #region ENUMERADOS
         public enum Tipo
         {
             Disco, Cable
@@ -17,7 +18,7 @@ namespace Biblioteca
         {
             Local, LargaDistancia, Nacional
         }
-
+        #endregion
         protected string marca;
         public Tipo tipo;
 
@@ -29,6 +30,11 @@ namespace Biblioteca
         {
             this.marca = marca;
             this.tipo = tipo;
+        }
+
+        public override double CalcularCosto()
+        {
+            return 0;
         }
     }
 }
