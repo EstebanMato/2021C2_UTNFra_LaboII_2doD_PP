@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Biblioteca.Alquiler">
+    <Position X="7.5" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAQAADAEgACAAAAAgAAAAIAgAAAQIAAAEiA=</HashCode>
+      <FileName>Alquiler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.CiberCafe">
+    <Position X="10.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAgBAAIAgMAAAKAAAAAgAIAAAAQAADAAAAAAI=</HashCode>
+      <FileName>CiberCafe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Cliente">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <NestedTypes>
+      <Enum Name="Biblioteca.Cliente.EAccion" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Cliente.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEABAgBAAQJAACEgQAAgAAAAAAAAoAAAAIAAAAAAAY=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Jugador">
+    <Position X="1" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAQAAoABQACAgUgAAIAAAAAAAAAIgABAAAAAAQAAI=</HashCode>
+      <FileName>Jugador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Llamador">
+    <Position X="4.25" Y="1" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="Biblioteca.Llamador.ETipoLlamada" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Llamador.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EACAAAAAAAQAAAAEgAAAAAAAAAAAAIQAABEEABABgII=</HashCode>
+      <FileName>Llamador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Computadora">
+    <Position X="7.5" Y="9" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="Biblioteca.Computadora.ESoftware" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Biblioteca.Computadora.EPerifericos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Biblioteca.Computadora.EJuegos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Biblioteca.Computadora.EProcesador" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Biblioteca.Computadora.ERAM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Biblioteca.Computadora.EPlacaVideo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Computadora.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ARwAQAAoABQACQgUhAAIgAQAAAAAAIgEBIAAAAAQAiA=</HashCode>
+      <FileName>Computadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Telefono">
+    <Position X="11.5" Y="5.75" Width="1.75" />
+    <NestedTypes>
+      <Enum Name="Biblioteca.Telefono.ETipo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Telefono.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABBAAAAQQAAAEBAAAgAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Telefono.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Equipo">
+    <Position X="7.5" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAACGBAAAgAAAAAQAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Equipo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca.Hardcodeo">
+    <Position X="3.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hardcodeo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

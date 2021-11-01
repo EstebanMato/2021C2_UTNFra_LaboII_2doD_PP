@@ -6,36 +6,38 @@ using System.Threading.Tasks;
 
 namespace Biblioteca
 {
-    public class Cliente
+    public abstract class Cliente
     {
         public enum EAccion
         {
             Llamar, Viciar
         }
 
-        public string dni;
-        public string nombre;
-        public string apellido;
-        public int edad;
-        public DateTime horaInicial;
-        public DateTime horaFinal;
-        public EAccion accion;
-        public Equipo equipo;
+        string dni;
+        string nombre;
+        string apellido;
+        int edad;
+        DateTime horaInicial;
+        DateTime horaFinal;
+        EAccion accion;
 
-        public Cliente()
-        {
-
-        }
+        /// <summary>
+        /// Constructor de Cliente que recibe el Dni, Nombre, Apellido, Edad y Accion
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="edad"></param>
+        /// <param name="accion"></param>
         public Cliente(string dni, string nombre, string apellido, int edad, EAccion accion)
         {
-            this.dni = dni;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.edad = edad;
-            this.accion = accion;
+            this.Dni = dni;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Edad = edad;
+            this.Accion = accion;
         }
 
-        #region GETTERS Y SETTERS
         public string Dni
         {
             get
@@ -99,45 +101,84 @@ namespace Biblioteca
             {
                 return horaInicial;
             }
-
             set
             {
                 this.horaInicial = value;
             }
         }
-
         public DateTime HoraFinal
         {
             get
             {
                 return horaFinal;
             }
-
             set
             {
                 this.horaFinal = value;
             }
         }
-#endregion
-        
-        public double TiempoDeUso()
-        {
-          //  TimeSpan duracion = this.HoraFinal - this.HoraInicial;
-            TimeSpan duracion = DateTime.Now.AddSeconds(29) - DateTime.Now;
 
-            double segundosTotales = duracion.TotalSeconds;
+        /// <summary>
+        /// Calcula el costo de un alquiler
+        /// </summary>
+        /// <param name="alquiler"></param>
+        /// <returns></returns>
+        //public abstract string CalcularCosto(Alquiler alquiler);
 
-            return segundosTotales;
-        }
-
+        /// <summary>
+        /// Muestra los datos de un Cliente
+        /// </summary>
+        /// <returns></returns>
         public string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Dni} , {Nombre}, {Apellido} , {Edad}");
+            sb.Append($"Cliente: \n{Apellido}, {Nombre}, {Edad} años. \nDNI {Dni} \nSolicito {Accion}");
 
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Devuelve el tiempo de uso de un Cliente
+        /// </summary>
+        /// <returns></returns>
+        public virtual TimeSpan TiempoDeUso()
+        {
+            TimeSpan duracion = this.HoraFinal - this.HoraInicial;
 
+            return duracion;
+        }
+
+        /// <summary>
+        /// Sobrecarga del método ToString, lista los datos de un Cliente
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.Mostrar();
+        }
+
+        /// <summary>
+        /// Sobrecargar del método Equals. Indica si dos clientes son iguales según Dni.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public override bool Equals(Object o)
+        {
+           if(this.Dni == ((Cliente)o).Dni)
+           {
+               return true;
+           }
+           return false;
+        }
+
+        /// <summary>
+        /// Sobrecargar del método GetHashCode. Indica si dos clientes son iguales según Dni
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return this.Dni.GetHashCode();
+        }
     }
 }
+

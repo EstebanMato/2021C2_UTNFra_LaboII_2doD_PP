@@ -8,33 +8,95 @@ namespace Biblioteca
 {
     public class Telefono : Equipo
     {
-        #region ENUMERADOS
-        public enum Tipo
+        public enum ETipo
         {
             Disco, Cable
         }
 
-        public enum TipoLlamada
-        {
-            Local, LargaDistancia, Nacional
-        }
-        #endregion
-        protected string marca;
-        public Tipo tipo;
+        private string marca;
+        private ETipo tipo;
+        private bool disponible;
 
-        public Telefono()
+        public override string Nombre
         {
-
-        }
-        public Telefono(string marca, Telefono.Tipo tipo)
-        {
-            this.marca = marca;
-            this.tipo = tipo;
+            get
+            {
+                return nombre;
+            }
+            set
+            {
+                nombre = value;
+            }
         }
 
-        public override double CalcularCosto()
+        protected string Marca 
         {
-            return 0;
+            get
+            {
+                return marca;
+            }
+            set
+            {
+                marca = value;
+            }
         }
+        public ETipo Tipo 
+        { 
+            get
+            {
+                return tipo;
+            }
+            set
+            {
+                tipo = value;
+            } 
+        }
+        public override bool Disponible
+        {
+            get
+            {
+                return disponible;
+            }
+
+            set
+            {
+                disponible = value;
+            }
+        }
+
+        /// <summary>
+        /// Constructor de un Telefono que recibe el Nombre, Marca y el Tipo
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="marca"></param>
+        /// <param name="tipo"></param>
+        public Telefono(string nombre, string marca, Telefono.ETipo tipo)
+        {
+            this.Nombre = nombre;
+            this.Marca = marca;
+            this.Tipo = tipo;
+            this.Disponible = true;
+        }
+
+        /// <summary>
+        /// Retornara los datos de un telefono
+        /// </summary>
+        /// <returns></returns>
+        public override string Mostrar()
+        {
+            return $"Telefono {Nombre}, es tipo {Tipo} y marca {Marca}";
+        }
+
+
+        /// <summary>
+        /// Sobrecarga del metodo ToString que retornada los datos de un Telefono
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.Mostrar();
+        }
+
+
     }
 }

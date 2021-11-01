@@ -15,131 +15,158 @@ namespace FrmCiberCafe
     {
         private CiberCafe ciber;
         private FrmMenuComputadora menuComputadora;
-
-
-        public Computadora C1 = new Computadora();
-        public Computadora C2 = new Computadora();
-        public Computadora C3 = new Computadora();
-        public Telefono T1 = new Telefono("Cisco", Telefono.Tipo.Cable);
-        public Telefono T2 = new Telefono("Avaya", Telefono.Tipo.Disco);
-
-        public Cliente Cli1 = new Cliente("11111111", "JuanFer", "Quinteros", 10, Cliente.EAccion.Viciar);
-        public Cliente Cli2 = new Cliente("22222222", "Ignacio", "Scocco", 32, Cliente.EAccion.Viciar);
-        public Cliente Cli3 = new Cliente("33333333", "Lucas", "Pratto", 27, Cliente.EAccion.Viciar);
-        public Cliente Cli4 = new Cliente("44444444", "Pity", "Martinez", 10, Cliente.EAccion.Llamar);
-        public Cliente Cli5 = new Cliente("55555555", "Marcelo", "Gallardo", 100, Cliente.EAccion.Llamar);
-
-
+        private FrmMenuTelefono menuTelefono;
+        private FrmMenuEstadisticas menuEstadisticas;
+        private FrmMenuAltaAlquiler menuAltaAlquiler;
+        int indice;
         public FrmMenu()
         {
             InitializeComponent();
             this.ciber = new CiberCafe();
-            Hardcode.InicializarCompu(C1);
-            Hardcode.InicializarCompu(C2);
-            Hardcode.InicializarCompu(C3);
-            ciber.listaDeClientes.Enqueue(Cli1);
-            ciber.listaDeClientes.Enqueue(Cli2);
-            ciber.listaDeClientes.Enqueue(Cli3);
-            ciber.listaDeClientes.Enqueue(Cli4);
-            ciber.listaDeClientes.Enqueue(Cli5);
-
-        }
-
-        private void btnAsignar_Click(object sender, EventArgs e)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            menuComputadora = new FrmMenuComputadora();
-            menuComputadora.ShowDialog();
-
-            if(rbtnC1.Checked)
-            {
-                if(C1.clienteEnUso is null)
-                    sb.Append(ciber.LlamarCliente(C1));
-                else
-                    sb.Append("Equipo en uso");
-            }
-            if (rbtnC2.Checked == true)
-            {
-                if (C2.clienteEnUso is null)
-                    sb.Append(ciber.LlamarCliente(C2));
-                else
-                    sb.Append("Equipo en uso");
-            }
-            if (rbtnC3.Checked == true)
-            {
-                if (C3.clienteEnUso is null)
-                    sb.Append(ciber.LlamarCliente(C3));
-                else
-                    sb.Append("Equipo en uso");
-            }
-            if (rbtnT1.Checked == true)
-            {
-                if (T1.clienteEnUso is null)
-                    sb.Append(ciber.LlamarCliente(T1));
-                else
-                    sb.Append("Equipo en uso");
-            }
-            if (rbtnT2.Checked == true)
-            {
-                if (T2.clienteEnUso is null)
-                    sb.Append(ciber.LlamarCliente(T2));
-                else
-                    sb.Append("Equipo en uso");
-            }
-            MessageBox.Show(sb.ToString());
+            Hardcodeo.InicializarEquipos(ciber);
+            Hardcodeo.InicializarClientes(ciber);
         }
 
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-            foreach (Cliente clie in this.ciber.listaDeClientes)
-            {
-                lstClientes.Items.Add(clie.Mostrar());
-            }
+            this.RecagarListaClientes();
+            this.RecargarListaEquipo();
+            this.Text = $"Operador: Esteban Mato, {DateTime.Now.ToString("D")}";
+        }
 
+
+        private void btnProximoCliente_Click(object sender, EventArgs e)
+        {
+            Cliente proxCliente = ciber.ProximoCliente();
+
+            if (proxCliente is not null)
+            {
+                if(proxCliente.Accion is Biblioteca.Cliente.EAccion.Viciar)
+                {
+                    menuComputadora = new FrmMenuComputadora(ciber, (Jugador)proxCliente);
+                    menuComputadora.ShowDialog();
+
+                }
+                else if(proxCliente.Accion is Biblioteca.Cliente.EAccion.Llamar)
+                {
+                    menuTelefono = new FrmMenuTelefono(ciber, (Llamador)proxCliente);
+                    menuTelefono.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay clientes en espera");
+            }
+            RecagarListaClientes();
+            RecargarListaEquipo();
+        }
+
+        /// <summary>
+        /// Recarga la lsita de clientes en espera
+        /// </summary>
+        private void RecagarListaClientes()
+        {
+            lstbListaClientes.Items.Clear();
+            foreach (Cliente cliente in ciber.ListaClientes)
+            {
+                lstbListaClientes.Items.Add(cliente.Mostrar());
+            }
+        }
+
+        /// <summary>
+        /// Recarga el listado de Estados de Equipos
+        /// </summary>
+        private void RecargarListaEquipo()
+        {
+            dtgvEstadoEquipo.Rows.Clear();
+            Alquiler alquier;
+            foreach (Equipo equipo in ciber.ListaEquipos)
+            {
+                alquier = ciber.GetAlquiler(equipo);
+                int n = dtgvEstadoEquipo.Rows.Add();
+                if(equipo.Disponible)
+                {
+                    dtgvEstadoEquipo.Rows[n].Cells[2].Value = "Libre";
+                    dtgvEstadoEquipo.Rows[n].Cells[3].Value = "--";
+                }
+                else
+                {
+                    dtgvEstadoEquipo.Rows[n].Cells[2].Value = "Ocupado";
+                    dtgvEstadoEquipo.Rows[n].Cells[3].Value = $"{alquier.Cliente.Nombre}, {alquier.Cliente.Apellido}";
+                }
+                if (equipo is Computadora)
+                {
+                    dtgvEstadoEquipo.Rows[n].Cells[0].Value = ((Computadora)equipo).Nombre;
+                    dtgvEstadoEquipo.Rows[n].Cells[1].Value = "Computadora";
+
+                }
+                else if (equipo is Telefono)
+                {
+                    dtgvEstadoEquipo.Rows[n].Cells[0].Value = ((Telefono)equipo).Nombre;
+                    dtgvEstadoEquipo.Rows[n].Cells[1].Value = "Telefono";
+                }
+            }
+        }
+
+        private void dtgvEstadoEquipo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indice = e.RowIndex;
         }
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
+            Equipo equipo = ciber.GetEquipo(dtgvEstadoEquipo.Rows[indice].Cells[0].Value.ToString());
+            Alquiler alquiler = ciber.GetAlquiler(equipo);
+            
+            if (alquiler is null)
+            {
+                MessageBox.Show("Equipo no en uso");
+            }
+            else
+            {
+                CiberCafe.FinalizarAlquiler(alquiler);
 
-            if (rbtnC1.Checked == true)
-            {
-                if(C1.clienteEnUso is not null)
-                {
-                    sb.Append(ciber.Cobrar(C1));
-                    sb.Append($"\n{C1.clienteEnUso.horaInicial.ToString()} ---- {C1.clienteEnUso.horaFinal.ToString()}");
-                }
-                else
-                {
-                    sb.Append("El equipo NO en uso");
-                }
+                if(alquiler.Cliente is Jugador)
+                    MessageBox.Show($"Se finalizo la sesión del equipo {equipo.Nombre} \n{alquiler.CalcularCosto((Jugador)alquiler.Cliente)}");
+
+                if (alquiler.Cliente is Llamador)
+                    MessageBox.Show($"Se finalizo la sesión del equipo {equipo.Nombre} \n{alquiler.CalcularCosto((Llamador)alquiler.Cliente)}");
+                RecagarListaClientes();
+                RecargarListaEquipo();
             }
-            if (rbtnC2.Checked == true)
-            {
-                if (C2.clienteEnUso is not null)
-                {
-                    sb.Append("Aca debería facturar");
-                }
-                else
-                {
-                    sb.Append("El equipo NO en uso");
-                }
-            }
-            if (rbtnC3.Checked == true)
-            {
-                
-            }
-            if (rbtnT1.Checked == true)
-            {
-               
-            }
-            if (rbtnT2.Checked == true)
-            {
-                
-            }
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("---MENU PRINCIPAL---");
+            sb.AppendLine("Estado de equipos: Se podra observar los equipos disponibles, los que no y por quien se esta ocupando el equipo.");
+            sb.AppendLine("\nLista de clientes: Se podra observar los clientes en espera y el tipo de alquiler solicitado");
+            sb.AppendLine("\nProximo cliente: Llamara al proximo cliente de la lista");
+            sb.AppendLine("\nCobrar: Finalizara la sesion y facturara el equipo seleccionado actualmente");
+            sb.AppendLine("\nInfo equipos: Mostrara la información del equipo seleccionado");
+            sb.AppendLine("\nEstadisticas: Menu de estadisticas historicas");
 
             MessageBox.Show(sb.ToString());
+        }
+
+        private void btnInformacion_Click(object sender, EventArgs e)
+        {
+            Equipo equipo = ciber.GetEquipo(dtgvEstadoEquipo.Rows[indice].Cells[0].Value.ToString());
+            MessageBox.Show(equipo.Mostrar());   
+        }
+
+        private void btnEstadisticas_Click(object sender, EventArgs e)
+        {
+            menuEstadisticas = new FrmMenuEstadisticas(ciber);
+            menuEstadisticas.ShowDialog();
+        }
+
+        private void btnNuevoAlquiler_Click(object sender, EventArgs e)
+        {
+            menuAltaAlquiler = new FrmMenuAltaAlquiler(ciber);
+            menuAltaAlquiler.ShowDialog();
+            RecagarListaClientes();
         }
     }
 }

@@ -4,12 +4,12 @@ namespace FrmCiberCafe
     partial class FrmMenu
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -24,173 +24,220 @@ namespace FrmCiberCafe
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.rbtnC1 = new System.Windows.Forms.RadioButton();
-            this.grpBox = new System.Windows.Forms.GroupBox();
-            this.rbtnT2 = new System.Windows.Forms.RadioButton();
-            this.rbtnT1 = new System.Windows.Forms.RadioButton();
-            this.rbtnC3 = new System.Windows.Forms.RadioButton();
-            this.rbtnC2 = new System.Windows.Forms.RadioButton();
-            this.btnAsignar = new System.Windows.Forms.Button();
-            this.btnInformacion = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dtgvEstadoEquipo = new System.Windows.Forms.DataGridView();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblEstadoEquipo = new System.Windows.Forms.Label();
+            this.lstbListaClientes = new System.Windows.Forms.ListBox();
+            this.btnProximoCliente = new System.Windows.Forms.Button();
             this.btnCobrar = new System.Windows.Forms.Button();
+            this.btnInformacion = new System.Windows.Forms.Button();
             this.btnEstadisticas = new System.Windows.Forms.Button();
-            this.lstClientes = new System.Windows.Forms.ListBox();
-            this.grpBox.SuspendLayout();
+            this.btnAyuda = new System.Windows.Forms.Button();
+            this.btnNuevoAlquiler = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvEstadoEquipo)).BeginInit();
             this.SuspendLayout();
             // 
-            // rbtnC1
+            // dtgvEstadoEquipo
             // 
-            this.rbtnC1.AutoSize = true;
-            this.rbtnC1.Location = new System.Drawing.Point(15, 33);
-            this.rbtnC1.Name = "rbtnC1";
-            this.rbtnC1.Size = new System.Drawing.Size(39, 19);
-            this.rbtnC1.TabIndex = 0;
-            this.rbtnC1.TabStop = true;
-            this.rbtnC1.Text = "C1";
-            this.rbtnC1.UseVisualStyleBackColor = true;
+            this.dtgvEstadoEquipo.AllowUserToAddRows = false;
+            this.dtgvEstadoEquipo.AllowUserToResizeColumns = false;
+            this.dtgvEstadoEquipo.AllowUserToResizeRows = false;
+            this.dtgvEstadoEquipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgvEstadoEquipo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvEstadoEquipo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Descripcion,
+            this.Tipo,
+            this.Estado,
+            this.Cliente});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvEstadoEquipo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvEstadoEquipo.Location = new System.Drawing.Point(12, 27);
+            this.dtgvEstadoEquipo.Name = "dtgvEstadoEquipo";
+            this.dtgvEstadoEquipo.ReadOnly = true;
+            this.dtgvEstadoEquipo.RowHeadersVisible = false;
+            this.dtgvEstadoEquipo.RowTemplate.Height = 25;
+            this.dtgvEstadoEquipo.Size = new System.Drawing.Size(555, 286);
+            this.dtgvEstadoEquipo.TabIndex = 0;
+            this.dtgvEstadoEquipo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEstadoEquipo_CellClick);
             // 
-            // grpBox
+            // Descripcion
             // 
-            this.grpBox.Controls.Add(this.rbtnT2);
-            this.grpBox.Controls.Add(this.rbtnT1);
-            this.grpBox.Controls.Add(this.rbtnC3);
-            this.grpBox.Controls.Add(this.rbtnC2);
-            this.grpBox.Controls.Add(this.rbtnC1);
-            this.grpBox.Location = new System.Drawing.Point(12, 12);
-            this.grpBox.Name = "grpBox";
-            this.grpBox.Size = new System.Drawing.Size(145, 139);
-            this.grpBox.TabIndex = 1;
-            this.grpBox.TabStop = false;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
             // 
-            // rbtnT2
+            // Tipo
             // 
-            this.rbtnT2.AutoSize = true;
-            this.rbtnT2.Location = new System.Drawing.Point(107, 99);
-            this.rbtnT2.Name = "rbtnT2";
-            this.rbtnT2.Size = new System.Drawing.Size(37, 19);
-            this.rbtnT2.TabIndex = 5;
-            this.rbtnT2.TabStop = true;
-            this.rbtnT2.Text = "T2";
-            this.rbtnT2.UseVisualStyleBackColor = true;
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
             // 
-            // rbtnT1
+            // Estado
             // 
-            this.rbtnT1.AutoSize = true;
-            this.rbtnT1.Location = new System.Drawing.Point(15, 99);
-            this.rbtnT1.Name = "rbtnT1";
-            this.rbtnT1.Size = new System.Drawing.Size(37, 19);
-            this.rbtnT1.TabIndex = 4;
-            this.rbtnT1.TabStop = true;
-            this.rbtnT1.Text = "T1";
-            this.rbtnT1.UseVisualStyleBackColor = true;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
             // 
-            // rbtnC3
+            // Cliente
             // 
-            this.rbtnC3.AutoSize = true;
-            this.rbtnC3.Location = new System.Drawing.Point(105, 33);
-            this.rbtnC3.Name = "rbtnC3";
-            this.rbtnC3.Size = new System.Drawing.Size(39, 19);
-            this.rbtnC3.TabIndex = 3;
-            this.rbtnC3.TabStop = true;
-            this.rbtnC3.Text = "C3";
-            this.rbtnC3.UseVisualStyleBackColor = true;
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 150;
             // 
-            // rbtnC2
+            // label1
             // 
-            this.rbtnC2.AutoSize = true;
-            this.rbtnC2.Location = new System.Drawing.Point(60, 33);
-            this.rbtnC2.Name = "rbtnC2";
-            this.rbtnC2.Size = new System.Drawing.Size(39, 19);
-            this.rbtnC2.TabIndex = 2;
-            this.rbtnC2.TabStop = true;
-            this.rbtnC2.Text = "C2";
-            this.rbtnC2.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 316);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Lista de clientes";
             // 
-            // btnAsignar
+            // lblEstadoEquipo
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(12, 191);
-            this.btnAsignar.Name = "btnAsignar";
-            this.btnAsignar.Size = new System.Drawing.Size(75, 23);
-            this.btnAsignar.TabIndex = 2;
-            this.btnAsignar.Text = "Asignar";
-            this.btnAsignar.UseVisualStyleBackColor = true;
-            this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
+            this.lblEstadoEquipo.AutoSize = true;
+            this.lblEstadoEquipo.Location = new System.Drawing.Point(12, 9);
+            this.lblEstadoEquipo.Name = "lblEstadoEquipo";
+            this.lblEstadoEquipo.Size = new System.Drawing.Size(103, 15);
+            this.lblEstadoEquipo.TabIndex = 3;
+            this.lblEstadoEquipo.Text = "Estado de equipos";
             // 
-            // btnInformacion
+            // lstbListaClientes
             // 
-            this.btnInformacion.Location = new System.Drawing.Point(12, 236);
-            this.btnInformacion.Name = "btnInformacion";
-            this.btnInformacion.Size = new System.Drawing.Size(180, 23);
-            this.btnInformacion.TabIndex = 3;
-            this.btnInformacion.Text = "Mostrar Informacion";
-            this.btnInformacion.UseVisualStyleBackColor = true;
+            this.lstbListaClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstbListaClientes.FormattingEnabled = true;
+            this.lstbListaClientes.ItemHeight = 15;
+            this.lstbListaClientes.Location = new System.Drawing.Point(12, 341);
+            this.lstbListaClientes.Name = "lstbListaClientes";
+            this.lstbListaClientes.Size = new System.Drawing.Size(555, 154);
+            this.lstbListaClientes.TabIndex = 4;
+            // 
+            // btnProximoCliente
+            // 
+            this.btnProximoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProximoCliente.Location = new System.Drawing.Point(629, 27);
+            this.btnProximoCliente.Name = "btnProximoCliente";
+            this.btnProximoCliente.Size = new System.Drawing.Size(102, 55);
+            this.btnProximoCliente.TabIndex = 5;
+            this.btnProximoCliente.Text = "Proximo Cliente";
+            this.btnProximoCliente.UseVisualStyleBackColor = true;
+            this.btnProximoCliente.Click += new System.EventHandler(this.btnProximoCliente_Click);
             // 
             // btnCobrar
             // 
-            this.btnCobrar.Location = new System.Drawing.Point(117, 191);
+            this.btnCobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCobrar.Location = new System.Drawing.Point(629, 99);
             this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCobrar.TabIndex = 4;
+            this.btnCobrar.Size = new System.Drawing.Size(102, 55);
+            this.btnCobrar.TabIndex = 6;
             this.btnCobrar.Text = "Cobrar";
             this.btnCobrar.UseVisualStyleBackColor = true;
             this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
+            // btnInformacion
+            // 
+            this.btnInformacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInformacion.Location = new System.Drawing.Point(629, 170);
+            this.btnInformacion.Name = "btnInformacion";
+            this.btnInformacion.Size = new System.Drawing.Size(102, 55);
+            this.btnInformacion.TabIndex = 7;
+            this.btnInformacion.Text = "Info equipos";
+            this.btnInformacion.UseVisualStyleBackColor = true;
+            this.btnInformacion.Click += new System.EventHandler(this.btnInformacion_Click);
+            // 
             // btnEstadisticas
             // 
-            this.btnEstadisticas.Location = new System.Drawing.Point(254, 191);
+            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEstadisticas.Location = new System.Drawing.Point(629, 241);
             this.btnEstadisticas.Name = "btnEstadisticas";
-            this.btnEstadisticas.Size = new System.Drawing.Size(75, 23);
-            this.btnEstadisticas.TabIndex = 5;
+            this.btnEstadisticas.Size = new System.Drawing.Size(102, 55);
+            this.btnEstadisticas.TabIndex = 8;
             this.btnEstadisticas.Text = "Estadisticas";
             this.btnEstadisticas.UseVisualStyleBackColor = true;
+            this.btnEstadisticas.Click += new System.EventHandler(this.btnEstadisticas_Click);
             // 
-            // lstClientes
+            // btnAyuda
             // 
-            this.lstClientes.FormattingEnabled = true;
-            this.lstClientes.ItemHeight = 15;
-            this.lstClientes.Location = new System.Drawing.Point(254, 12);
-            this.lstClientes.Name = "lstClientes";
-            this.lstClientes.Size = new System.Drawing.Size(268, 169);
-            this.lstClientes.TabIndex = 6;
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAyuda.Location = new System.Drawing.Point(782, 5);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(33, 28);
+            this.btnAyuda.TabIndex = 9;
+            this.btnAyuda.Text = "?";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
+            // btnNuevoAlquiler
+            // 
+            this.btnNuevoAlquiler.Location = new System.Drawing.Point(629, 440);
+            this.btnNuevoAlquiler.Name = "btnNuevoAlquiler";
+            this.btnNuevoAlquiler.Size = new System.Drawing.Size(102, 55);
+            this.btnNuevoAlquiler.TabIndex = 10;
+            this.btnNuevoAlquiler.Text = "Nuevo Alquiler";
+            this.btnNuevoAlquiler.UseVisualStyleBackColor = true;
+            this.btnNuevoAlquiler.Click += new System.EventHandler(this.btnNuevoAlquiler_Click);
             // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 350);
-            this.Controls.Add(this.lstClientes);
+            this.ClientSize = new System.Drawing.Size(820, 516);
+            this.Controls.Add(this.btnNuevoAlquiler);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnEstadisticas);
-            this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.btnInformacion);
-            this.Controls.Add(this.btnAsignar);
-            this.Controls.Add(this.grpBox);
+            this.Controls.Add(this.btnCobrar);
+            this.Controls.Add(this.btnProximoCliente);
+            this.Controls.Add(this.lstbListaClientes);
+            this.Controls.Add(this.lblEstadoEquipo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtgvEstadoEquipo);
+            this.MinimumSize = new System.Drawing.Size(836, 555);
             this.Name = "FrmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Esteban Mato";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
-            this.grpBox.ResumeLayout(false);
-            this.grpBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvEstadoEquipo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RadioButton rbtnC1;
-        private System.Windows.Forms.GroupBox grpBox;
-        private System.Windows.Forms.RadioButton rbtnC3;
-        private System.Windows.Forms.RadioButton rbtnC2;
-        private System.Windows.Forms.RadioButton rbtnT1;
-        private System.Windows.Forms.RadioButton rbtnT2;
-        private System.Windows.Forms.Button btnAsignar;
-        private System.Windows.Forms.Button btnInformacion;
+        private System.Windows.Forms.DataGridView dtgvEstadoEquipo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEstadoEquipo;
+        private System.Windows.Forms.ListBox lstbListaClientes;
+        private System.Windows.Forms.Button btnProximoCliente;
         private System.Windows.Forms.Button btnCobrar;
+        private System.Windows.Forms.Button btnInformacion;
         private System.Windows.Forms.Button btnEstadisticas;
-        private System.Windows.Forms.ListBox lstClientes;
+        private System.Windows.Forms.Button btnAyuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.Button btnNuevoAlquiler;
     }
 }
-
